@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.6.0.js" type="text/javascript"></script> 
+    <script src="jquery-ui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{ font: 14px sans-serif; text-align: center; }
+    </style>
+ 	<title>theMarket - Products</title>
+	<script>
+	$(document).ready(function() {
+		$( "#productinput" ).change(function() {
+		
+			$.ajax({
+				url: 'products.php', 
+				data: {searchProduct: $( "#productinput" ).val()},
+				success: function(data){
+					$('#productresult').html(data);	
+				
+				}
+			});
+		});
+		
+	});
+	</script>
+</head>
+<body>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+        <a class="nav-link active" href="products.html">MarketPlace</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="account.php">Account</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="reset-password.php">Reset Password</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="logout.php">Sign Out</a>
+        </li>
+       </ul>
+       <br></br>
+	<h3>Search Name of Product</h3>	
+	<input class="xlarge" id="productinput" type="search" size="30" placeholder="Product Name Contains"/>
+    <br></br>
+	<div id="productresult" class="justify-content-center">Search Result</div>
+
+</body>
+</html>
